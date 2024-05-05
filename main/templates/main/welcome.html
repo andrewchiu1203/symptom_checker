@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" lang="en-us">
+        <link href="{% static 'main/style.css' %}" rel="stylesheet">
+        <title>Welcome</title>
+    </head>
+
+    <body>
+        <div class="greet-container">
+            <p class="greet-content">
+                Hello, this is a symptom checker trained on a large language model.<br>
+                Please type in the name of a sickness and check its symptoms.
+            </p>
+
+            <a class="btn-1" href="{% url 'main:index' %}">Get started &#8594;</a>
+        </div>
+    </body>
+</html>
