@@ -37,19 +37,16 @@ def index(request):
         if sickness == "":
             return render(request, "main/index.html", {
                 "result": "Empty string is not allowed",
-                "error": True
             })
         
         symptom = get_symptom(sickness)
 
         return render(request, "main/index.html", {
             "result": symptom,
-            "error" : False,
         })
 
     return render(request, "main/index.html", {
             "result": None,
-            "error" : False,
         })
 
 def welcome(request):

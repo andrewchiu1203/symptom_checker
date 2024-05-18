@@ -3,18 +3,21 @@
 <html>
     <head>
         <meta charset="UTF-8" lang="en-us">
+        <link rel="shortcut icon" type="image/png" href="{% static 'main/favicon.ico' %}"/>
         <link href="{% static 'main/style.css' %}" rel="stylesheet">
         <title>Welcome</title>
     </head>
 
     <body>
-        <div class="greet-container">
-            <p class="greet-content">
-                Hello, this is a symptom checker trained on a large language model.<br>
-                Please type in the name of a sickness and check its symptoms.
-            </p>
+        <p class="big-text">
+            This is a symptom checker trained on a large language model.<br/>
+            Please type in the name of a sickness and check its symptoms.<br/>
+        </p>
 
-            <a class="btn-1" href="{% url 'main:index' %}">Get started &#8594;</a>
-        </div>
+        <div class="blank-space"></div>
+        <div class="blank-space"></div>
+
+        <a class="btn big-text" href="{% url 'main:index' %}">Get started &#8594;</a>
+
     </body>
 </html>

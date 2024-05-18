@@ -3,77 +3,53 @@
 <html>
     <head>
         <meta charset="UTF-8" lang="en-us">
+        <link rel="shortcut icon" type="image/png" href="{% static 'main/favicon.ico' %}"/>
         <link href="{% static 'main/style.css' %}" rel="stylesheet">
         <script src="{% static 'main/action.js' %}"></script>
         <title>Symptom Checker</title>
     </head>
 
     <body>
-        <div class="greet-container">
-            <p class="greet-content">
-                Please enter the name of your sickness
-            </p>
+        <p class="big-text">
+            Symptom Checker
+        </p>
+        <div class="blank-space"></div>
 
-            <form method="post" class="form-container cell" id="form-container">
+        <div class="main-container">
+            <form method="post" id="form">
                 {% csrf_token %}
-                <div class="cell">
-                    <input type="text" name="sickness"
-                           placeholder=" sample text" class="input-1">
-                </div>
+                
+                <input class="input" type="text" name="sickness"
+                       placeholder=" Enter the name of sickness">
 
-                {% if result %}
-                <div class="cell">
-                    <button type="submit" class="btn-1" disabled>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                    </button>
-                </div>
-                {% else %}
-                <div class="cell">
-                    <button type="submit" class="btn-1" id="btn-1"
-                            onclick="showWheel(); disableButton()">
+                <button class="mid-text btn" type="submit" id="btn"
+                        onclick="process();" name="btnSubmit">
+
                         Submit
-                    </button>
-                </div>
-                {% endif %}
+
+                </button>
+
             </form>
+
+            <div class="blank-space"></div>
             
-            <div class="btn-2-container">
-                <a class="btn-2" href="{% url 'main:welcome' %}">To Home</a>
-                <a class="btn-2" href="{% url 'main:index' %}">Restart/Kill</a>
+            <div>
+                <a class="btn small-text" href="{% url 'main:index' %}">Kill / Restart</a>
+                <a class="btn small-text" href="{% url 'main:welcome' %}">Go back to Home</a>
             </div>
 
-            {% if result %}
-            <!-- Do nothing -->
-            {% else %}
-            <div class="load-text-container">
-                <div class="dual-ring-container">
-                    <div class="dual-ring"></div>
-                </div>
-                <div class="load-text"></div>
-            </div>
-            {% endif %}
+            <div class="blank-space"></div>
+            <div class="blank-space"></div>
 
-            {% if result %}
-            <div class="result-container">
-                <a class="result-content">
-                    <p class="result-title">Response: </p>
-                    {{ result }}
-                </a>
-            </div>
+            {% if not result %}
+            <p class="output mid-text" style="color: #707070;" id="output">
+                Response:
+            </p>
             {% else %}
-            <div class="result-container">
-                <div class="result-content" 
-                     style="font-weight:normal;text-align:center;min-height:40px;">
-                    Response will show up here
-                </div>
-            </div>
+            <p class="output mid-text" id="output">
+                {{ result }}
+            </p>
             {% endif %}
-
-            {% if error %}
-            <body onload="error()"></body>
-            {% else %}
-            <!-- Do nothing -->
-            {% endif %}
-            </div>
+        </div>
     </body>
 </html>
